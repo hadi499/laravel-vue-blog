@@ -31,7 +31,13 @@ const deletePost = (id) => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="w-[500px] mx-auto">
-                    <img :src="post.image_url" class="h-[300px]" alt="">
+                    <div v-if="post.image == null">
+                        <img src="../../Components/image/no-image.jpg" alt="No image available"  />
+                    </div>
+                    <div v-else>
+                        <img :src="post.image_url" class="h-[300px]" alt="">
+
+                    </div>
                     <div class="card-body">
                         <h5 class="text-2xl font-semibold my-3">{{ post.title }}</h5>
                         <div class="my-8 prose max-w-none" v-html="post.body"></div>

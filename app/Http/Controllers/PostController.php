@@ -43,7 +43,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             // 'slug' => 'required|unique:posts',
-            'image' => 'image|file|max:1024',
+            'image' => 'image|file|max:1024|nullable',
             'category_id' => 'required',
             'body' => 'required'
         ]);

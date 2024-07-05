@@ -4,7 +4,8 @@ import { Inertia } from '@inertiajs/inertia';
 import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
-    post: Object
+    post: Object,
+    category: Object
 });
 const deletePost = (id) => {
     if (confirm('Are you sure you want to delete this post?')) {
@@ -27,6 +28,7 @@ const deletePost = (id) => {
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Detail Post</h2>
         </template>
+     
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -38,9 +40,13 @@ const deletePost = (id) => {
                         <img :src="post.image_url" class="h-[300px]" alt="">
 
                     </div>
-                    <div class="card-body">
-                        <h5 class="text-2xl font-semibold my-3">{{ post.title }}</h5>
-                        <div class="my-8 prose max-w-none" v-html="post.body"></div>
+                    <div >
+                        <h5 class="text-2xl font-semibold mt-2">{{ post.title }}</h5>
+                        <Link :href="`/categories/${category.slug}`">
+                            <div class="text-blue-700">#{{ category.name }}</div>
+                        
+                        </Link>
+                        <div class="my-3 prose max-w-none" v-html="post.body"></div>
                         <!-- <p class="">{{ post.body }}</p> -->
                         <div class="flex gap-5 mt-3">
 

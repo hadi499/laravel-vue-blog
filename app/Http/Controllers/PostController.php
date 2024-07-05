@@ -25,8 +25,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->image_url = asset('storage/' . $post->image);
+        $category = $post->category;
         return Inertia::render('Posts/Show', [
             'post' => $post,
+            'category' => $category
         ]);
     }
 

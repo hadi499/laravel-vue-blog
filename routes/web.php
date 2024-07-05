@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Inertia\Inertia;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\PostController;
@@ -33,7 +34,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{post:slug}/edit', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-    
+    Route::get('/categories/{category:slug}', function (Category $category) {
+        return Inertia::render('Posts/Categories', [            
+            'posts' => $category->posts,    
+            'category' => $category->name,
+            'image_url' =>  asset('/storage/'),     
+        ]);
+    });
 });
 
 Route::middleware('auth')->group(function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Inertia\Inertia;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -25,10 +26,17 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->image_url = asset('storage/' . $post->image);
-        $category = $post->category;
+        
+        $post->category;
+        $post->user;
+        // $category = $post->category;
+
+        $comments = Comment::where('post_id', $post->id)->with('user')->latest('created_at')->get();
+      
         return Inertia::render('Posts/Show', [
             'post' => $post,
-            'category' => $category
+            // 'category' => $category,
+            'comments' => $comments
         ]);
     }
 

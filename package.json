@@ -25,6 +25,7 @@
         "@tiptap/starter-kit": "^2.4.0",
         "@tiptap/vue-3": "^2.4.0",
         "vue-material-design-icons": "^5.3.0",
+        "vue-moment": "^4.1.0",
         "vue-trix": "^1.2.0"
     }
 }

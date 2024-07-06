@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Models\Post;
 use Inertia\Inertia;
 use App\Models\Category;
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'image_url' =>  asset('/storage/'),     
         ]);
     });
+
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 
 Route::middleware('auth')->group(function () {

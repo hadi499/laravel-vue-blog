@@ -14,7 +14,7 @@ defineProps({
 
 <template>
 
-    <Head title="Post" />
+    <Head title="Posts by Category" />
 
     <AuthenticatedLayout>
         <template #header>

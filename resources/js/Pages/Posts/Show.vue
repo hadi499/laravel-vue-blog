@@ -22,12 +22,13 @@ const deletePost = (id) => {
 
 <template>
 
-    <Head title="Post" />
+    <Head title="Detail Post" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Detail Post</h2>
         </template>
+ 
      
 
         <div class="py-12">
@@ -42,13 +43,14 @@ const deletePost = (id) => {
                     </div>
                     <div >
                         <h5 class="text-2xl font-semibold mt-2">{{ post.title }}</h5>
+                       
                         <Link :href="`/categories/${category.slug}`">
                             <div class="text-blue-700">#{{ category.name }}</div>
                         
                         </Link>
                         <div class="my-3 prose max-w-none" v-html="post.body"></div>
                         <!-- <p class="">{{ post.body }}</p> -->
-                        <div class="flex gap-5 mt-3">
+                        <div class="flex gap-5 mt-3" v-if="$page.props.auth.user.id == post.user_id">
 
                             <Link :href="`/posts/${post.slug}/edit`" class="px-2 bg-blue-400 rounded-md hover:bg-blue-800 hover:text-white">edit</Link>
                             <!-- <Link :href="route('posts.destroy', post.id)" method="delete" as="button" type="button"

@@ -18,6 +18,7 @@ defineProps({
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>
         </template>
+     
 
         <div class="py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -40,8 +41,9 @@ defineProps({
                             <div v-else>
                                 <img :src="post.image_url + '/' + post.image" class="w-60 h-52" />
                             </div>
+                            <p class="text-sm font-semibold ml-2">@{{ post.user.name }}</p>
                             <Link :href="`/categories/${post.category.slug}`">
-                            <div class="text-blue-700 text-lg mt-3 ml-2">#{{ post.category.name }}</div>
+                            <div class="text-blue-700 text-lg ml-2">#{{ post.category.name }}</div>
 
                             </Link>
 

@@ -75,25 +75,65 @@ const form = useForm({
 
                         </div>
                         <div class="my-3 prose max-w-none" v-html="post.body"></div>
-
+                        <!-- <p class="">{{ post.body }}</p> -->
                         <div class="flex gap-5 mt-3" v-if="$page.props.auth.user.id == post.user_id">
 
                             <Link :href="`/posts/${post.slug}/edit`"
                                 class="px-2 bg-blue-400 rounded-md hover:bg-blue-800 hover:text-white">edit</Link>
-
+                            <!-- <Link :href="route('posts.destroy', post.id)" method="delete" as="button" type="button"
+                                class="px-2 bg-red-500 hover:text-red-700 mr-2">Delete</Link> -->
                             <button @click="deletePost(post.id)"
                                 class="px-2 bg-red-400 rounded-md hover:bg-red-800 hover:text-white">Delete
                                 Post</button>
                         </div>
                         <div class="mt-5">
+                            <!-- <form class="flex mt-2 flex-col gap-3 border-2 p-3" @submit.prevent="submit">
+                                <div class="flex flex-col gap-2">
+                                    <input type="hidden" name="post_id" v-model="form.post_id">
+                                    <TextAreaInput class="w-full" rows="3" placeholder="Your comment..." id="body"
+                                        type="text" v-model="form.body" />
+                                    <InputError :message="form.errors.body" />
+                                </div>
+
+                                <div class="flex items-center justify-end mt-4">
+                                    <Button class="ml-4" :class="{ 'opacity-25': form.processing }"
+                                        :disabled="form.processing">
+                                        Comment
+                                    </Button>
+                                </div>
+                            </form> -->
                             <FormComment />
+
+
                         </div>
                         <div class="mt-4">
+                            <!-- <div v-for="comment in comments" class="mb-2 border p-3">
+                                <div class="flex gap-3 items-stretch">
+                                    <img class="w-10 h-10 rounded-full"
+                                        src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/91/91a09746173fa3251cd6c1cce849d77d8444f816_full.jpg"
+                                        alt="">
+                                    <div>
+                                        <div class="flex gap-2 items-baseline">
+                                            <div class="font-semibold">{{ comment.user.name }}</div>
+                                            <div class="text-sm text-slate-500">{{ comment.created_at }}</div>
+
+                                        </div>
+                                        <div class="text-lg ">{{ comment.body }}</div>
+
+                                    </div>
+                                </div>
+
+
+                            </div> -->
                             <CommentLists :comments="comments" />
 
                         </div>
+
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     </AuthenticatedLayout>
